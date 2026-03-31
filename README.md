@@ -1,6 +1,36 @@
-# Healthcare AI Assistant
+# SymptoSenseAI – Healthcare AI Assistant
 
-A full-stack healthcare disease prediction system using Machine Learning, FastAPI, React, and MySQL.
+SymptoSenseAI is a full-stack healthcare web application that predicts potential diseases based on symptoms entered by the user. The system is powered by an **XGBoost machine learning model** trained on a structured medical dataset from Kaggle, which maps combinations of symptoms to 41 different diseases.
+
+## Dataset
+
+The training data comes from the **Disease Symptom Prediction** dataset on Kaggle:
+
+[https://www.kaggle.com/datasets/itachi9604/disease-symptom-description-dataset](https://www.kaggle.com/datasets/itachi9604/disease-symptom-description-dataset)
+
+It includes four CSV files:
+
+- `dataset.csv` — 4,920 rows mapping diseases to up to 17 symptoms per row (41 diseases, 132 unique symptoms)
+- `Symptom-severity.csv` — severity weight (1–7) for each symptom, used as model features
+- `symptom_Description.csv` — plain-English description of each disease
+- `symptom_precaution.csv` — up to 4 recommended precautions per disease
+
+## What the ML Model Does
+
+The model takes a patient's selected symptoms (plus optional age and gender) and predicts the most likely disease along with:
+
+- A **confidence score** (0–100%)
+- The **top 5 alternative diagnoses**
+- The **feature contributions** — which symptoms drove the prediction most
+
+## Web Scraping + ETL Engine
+
+Beyond disease prediction, the project includes a second module built as a **Data Ingestion Engine**. Users can submit a multi-word search query and the system will:
+
+- Scrape **Google, Bing, and DuckDuckGo** simultaneously using `requests` + `BeautifulSoup`
+- Run an **ETL pipeline** — extract raw URLs, remove ads and duplicates, load clean results into a dedicated MySQL database (`MY_CUSTOM_BOT`)
+- **Rank results by term frequency** — each page is fetched and counted for how many times the search term appears, so the most relevant pages surface at the top
+- Return a ranked list of 30+ real URLs through the React UI
 
 ---
 
