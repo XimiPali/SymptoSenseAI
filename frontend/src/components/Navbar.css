@@ -1,0 +1,191 @@
+/* ── Navbar ── */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-icon  { font-size: 1.4rem; }
+
+.navbar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── Centre navigation links ── */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.navbar-link--active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ── Right side wrapper (anchor for dropdown) ── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ── Profile trigger button ── */
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  font-weight: 500;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.profile-btn:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.profile-avatar   { font-size: 1rem; }
+.profile-username { font-weight: 600; }
+.profile-caret    { font-size: 0.6rem; color: var(--gray-400); margin-left: 0.1rem; }
+
+/* ── Dropdown panel ── */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: 265px;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+  overflow: hidden;
+}
+
+/* ── Dropdown header ── */
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem 0.65rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.profile-dropdown-icon  { font-size: 1.05rem; }
+
+.profile-dropdown-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+}
+
+/* ── Info rows ── */
+.profile-info {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.profile-info-label {
+  color: var(--gray-500);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.profile-info-value {
+  color: var(--gray-900);
+  font-weight: 600;
+  text-align: right;
+  max-width: 155px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* email is typically long — allow text to shrink */
+.profile-email {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+/* ── Divider ── */
+.profile-divider {
+  height: 1px;
+  background: var(--gray-100);
+  margin: 0;
+}
+
+/* ── Sign Out button ── */
+.profile-signout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #dc2626;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.profile-signout:hover {
+  background: #fef2f2;
+}

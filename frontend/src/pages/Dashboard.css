@@ -1,0 +1,125 @@
+/* ── Dashboard layout ── */
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
+}
+
+/* ── Main column ── */
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Welcome banner ── */
+.welcome-banner {
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-light), #dbeafe);
+  border-color: #bfdbfe;
+}
+
+.welcome-banner h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--gray-900);
+}
+
+.welcome-banner p {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+/* ── Prediction error ── */
+.predict-error {
+  padding: 1rem 1.25rem;
+}
+
+/* ── History sidebar ── */
+.history-card {
+  padding: 1.25rem;
+  position: sticky;
+  top: 76px;
+}
+
+.history-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--gray-900);
+}
+
+.history-empty {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  text-align: center;
+  padding: 1.5rem 0;
+  line-height: 1.6;
+}
+
+.history-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.history-item {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: var(--gray-50);
+}
+
+.history-disease {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.history-date {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.history-symptoms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dashboard-body {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .history-card {
+    position: static;
+  }
+}
