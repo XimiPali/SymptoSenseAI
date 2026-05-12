@@ -65,7 +65,10 @@ IntuitProject/
 │   │   ├── search_engine.py  # Google / Bing / DuckDuckGo scrapers
 │   │   ├── etl.py            # Extract → Transform → Load pipeline
 │   │   ├── frequency.py      # Parallel page fetch + term-frequency counter
+│   │   ├── screenshot_ocr.py # Selenium screenshot + pytesseract OCR stage ← NEW
 │   │   └── pipeline.py       # Orchestrator + multi-term automation loop
+│   ├── screenshots/          # Auto-saved webpage screenshots (git-tracked empty) ← NEW
+│   │   └── .gitkeep
 │   ├── requirements.txt
 │   └── .env.example
 │

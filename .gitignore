@@ -43,3 +43,8 @@ desktop.ini
 # ── Logs ────────────────────────────────────────────────────────────────────
 *.log
 logs/
+
+# OCR screenshots
+backend/screenshots/*.png
+backend/screenshots/*.jpg
+backend/screenshots/*.jpeg

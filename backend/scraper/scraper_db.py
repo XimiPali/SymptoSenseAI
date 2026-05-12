@@ -94,6 +94,8 @@ class SearchResult(ScraperBase):
     created_at    = Column(DateTime,    default=datetime.utcnow)
 
     search_term = relationship("SearchTerm", back_populates="search_results")
+    ocr_results = relationship("OcrResult",  back_populates="search_result",
+                               cascade="all, delete-orphan")
 
 
 class CleanResult(ScraperBase):
@@ -116,6 +118,21 @@ class TermFrequency(ScraperBase):
     url       = Column(Text,        nullable=False)
     term      = Column(String(500), nullable=False)
     frequency = Column(Integer,     default=0)
+
+
+class OcrResult(ScraperBase):
+    """Screenshot + OCR text extracted from a scraped search result page."""
+    __tablename__ = "ocr_results"
+
+    id               = Column(Integer, primary_key=True, index=True)
+    search_result_id = Column(Integer, ForeignKey("search_results.id"), nullable=True)
+    url              = Column(Text,        nullable=False)
+    screenshot_path  = Column(String(500), nullable=True)
+    ocr_text         = Column(Text,        nullable=True)
+    word_count       = Column(Integer,     default=0)
+    created_at       = Column(DateTime,    default=datetime.utcnow)
+
+    search_result = relationship("SearchResult", back_populates="ocr_results")
 
 
 # ── Create all scraper tables ──────────────────────────────────────────────

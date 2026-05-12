@@ -28,6 +28,7 @@ from scraper.scraper_db import SearchResult, SearchTerm
 from scraper.search_engine import ENGINES, search
 from scraper.etl import run_etl
 from scraper.frequency import analyze_urls
+from scraper.screenshot_ocr import run_screenshot_ocr
 
 
 # ── Internal helpers ───────────────────────────────────────────────────────
@@ -129,6 +130,11 @@ def run_pipeline(
     freq_map: Dict[str, int] = {}
     if deduped_clean:
         freq_map = analyze_urls(db, deduped_clean, term)
+
+    # 5. Screenshot + OCR (additional ETL stage — runs on first 5 clean URLs)
+    if deduped_clean:
+        print(f"[pipeline] starting screenshot+OCR stage (up to 5 URLs)...")
+        run_screenshot_ocr(db, deduped_clean, term_id, max_urls=5)
 
     # Build engine-source mapping for each URL
     url_to_engines: Dict[str, List[str]] = {}
