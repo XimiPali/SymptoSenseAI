@@ -1,4 +1,4 @@
-﻿/**
+/**
  * api/client.ts  --  v2
  * Changes: RegisterPayload + UserResponse now carry gender + age.
  * SymptomInput is { name, duration }. PredictResponse adds top5 + feature_contributions.
