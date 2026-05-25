@@ -12,9 +12,15 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
 load_dotenv()
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "mysql+mysqlconnector://root:password@localhost:3306/healthcare_ai",
+MYSQLHOST = os.getenv("MYSQLHOST")
+MYSQLPORT = os.getenv("MYSQLPORT")
+MYSQLUSER = os.getenv("MYSQLUSER")
+MYSQLPASSWORD = os.getenv("MYSQLPASSWORD")
+MYSQLDATABASE = os.getenv("MYSQLDATABASE")
+
+DATABASE_URL = (
+    f"mysql+mysqlconnector://{MYSQLUSER}:{MYSQLPASSWORD}"
+    f"@{MYSQLHOST}:{MYSQLPORT}/{MYSQLDATABASE}"
 )
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
