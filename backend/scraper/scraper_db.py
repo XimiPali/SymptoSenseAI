@@ -22,20 +22,28 @@ from sqlalchemy.orm import DeclarativeBase, relationship, sessionmaker
 load_dotenv()
 
 # ── Build connection URLs ──────────────────────────────────────────────────
-_MAIN_URL: str = os.getenv(
-    "DATABASE_URL",
-    "mysql+mysqlconnector://root:password@localhost:3306/healthcare_ai",
+# ── Build connection URLs ──────────────────────────────────────────────────
+
+MYSQLHOST = os.getenv("MYSQLHOST")
+MYSQLPORT = os.getenv("MYSQLPORT")
+MYSQLUSER = os.getenv("MYSQLUSER")
+MYSQLPASSWORD = os.getenv("MYSQLPASSWORD")
+MYSQLDATABASE = os.getenv("MYSQLDATABASE")
+
+_MAIN_URL = (
+    f"mysql+mysqlconnector://{MYSQLUSER}:{MYSQLPASSWORD}"
+    f"@{MYSQLHOST}:{MYSQLPORT}/{MYSQLDATABASE}"
 )
 
-# Replace only the database name (last path segment before optional query string)
-SCRAPER_DATABASE_URL: str = os.getenv(
-    "SCRAPER_DATABASE_URL",
-    re.sub(r"([^/]+)(\?.*)?$", "MY_CUSTOM_BOT", _MAIN_URL),
+SCRAPER_DATABASE_URL = (
+    f"mysql+mysqlconnector://{MYSQLUSER}:{MYSQLPASSWORD}"
+    f"@{MYSQLHOST}:{MYSQLPORT}/MY_CUSTOM_BOT"
 )
 
-# URL without any database name – used to CREATE DATABASE
-_BASE_URL: str = re.sub(r"/[^/]+(\?.*)?$", "", _MAIN_URL)
-
+_BASE_URL = (
+    f"mysql+mysqlconnector://{MYSQLUSER}:{MYSQLPASSWORD}"
+    f"@{MYSQLHOST}:{MYSQLPORT}"
+)
 
 def _ensure_database() -> None:
     """Create MY_CUSTOM_BOT schema if it does not already exist."""
